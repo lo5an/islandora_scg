@@ -39,6 +39,7 @@ abstract class IslandoraSampleContentGenerator {
       $this->timer = FALSE;
     }
     $this->data_dir = $options['data_dir'];
+    $this->site_uri = $options['site_uri'];
 
     // Serialized XML content that will be used for the MODS, DC,
     // etc. datastream.

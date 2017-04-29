@@ -114,6 +114,7 @@ function drush_islandora_scg_load() {
     'timer' => drush_get_option('timer', FALSE),
     'load_content' => drush_get_option('load_content', TRUE),
     'data_dir' => drush_get_option('data_dir', $path_to_data_dir),
+    'site_uri' => drush_get_option('uri', 'http://localhost')
   );
 
   // Confirm the parent object exists and is accessible;

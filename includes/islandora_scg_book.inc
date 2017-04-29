@@ -60,11 +60,11 @@ class IslandoraSampleBookGenerator extends IslandoraSampleContentGenerator {
    */
   public function loadContent() {
     $start_time = $this->startTimer();
-    $batch_cmd = 'drush -u 1 --uri=http://localhost islandora_book_batch_preprocess';
+    $batch_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_book_batch_preprocess';
     $batch_cmd .= ' --namespace=' . $this->namespace . ' --parent=' . $this->parent;
     $batch_cmd .= ' --parent_relationship_pred=isMemberOfCollection --type=directory --scan_target=' . $this->data_dir;
     exec($batch_cmd);
-    $ingest_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_ingest';
+    $ingest_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_ingest';
     exec($ingest_cmd);
     $this->stopTimer($start_time, $this->quantity, 'books', 'with ' . $this->pages . ' pages per book');
   }

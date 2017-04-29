@@ -40,12 +40,12 @@ class IslandoraSampleBasicImageGenerator extends IslandoraSampleContentGenerator
    */
   public function loadContent() {
     $start_time = $this->startTimer();
-    $batch_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_scan_preprocess';
+    $batch_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_scan_preprocess';
     $batch_cmd .= ' --namespace=' . $this->namespace;
     $batch_cmd .= ' --content_models=islandora:sp_basic_image --parent=' . $this->parent;
     $batch_cmd .= ' --parent_relationship_pred=isMemberOfCollection --type=directory --scan_target=' . $this->data_dir;
     exec($batch_cmd);
-    $ingest_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_ingest';
+    $ingest_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_ingest';
     exec($ingest_cmd);
     $this->stopTimer($start_time, $this->quantity, 'basic images');
   }

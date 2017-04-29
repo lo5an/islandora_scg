@@ -77,11 +77,11 @@ class IslandoraSampleNewspaperIssueGenerator extends IslandoraSampleContentGener
     if ($this->child_uses_timer) {
       $start_time = $this->startTimer();
     }
-    $batch_cmd = 'drush -u 1 --uri=http://localhost islandora_newspaper_batch_preprocess';
+    $batch_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_newspaper_batch_preprocess';
     $batch_cmd .= ' --namespace=' . $this->namespace . ' --parent=' . $this->parent;
     $batch_cmd .= ' --type=directory --scan_target=' . $this->data_dir;
     exec($batch_cmd);
-    $ingest_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_ingest';
+    $ingest_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_ingest';
     exec($ingest_cmd);
     if ($this->child_uses_timer) {
       $this->stopTimer($start_time, $this->quantity, 'newspaper issues');

@@ -39,12 +39,12 @@ class IslandoraSampleNewspaperGenerator extends IslandoraSampleContentGenerator 
     if (!$this->quantity_newspaper_issues) {
       $start_time = $this->startTimer();
     }
-    $batch_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_scan_preprocess';
+    $batch_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_scan_preprocess';
     $batch_cmd .= ' --namespace=' . $this->namespace;
     $batch_cmd .= ' --content_models=islandora:newspaperCModel --parent=' . $this->parent;
     $batch_cmd .= ' --parent_relationship_pred=isMemberOfCollection --type=directory --scan_target=' . $this->data_dir;
     exec($batch_cmd);
-    $ingest_cmd = 'drush -u 1 --uri=http://localhost islandora_batch_ingest';
+    $ingest_cmd = 'drush -u 1 --uri='.$this->site_uri.' islandora_batch_ingest';
     drush_shell_exec($ingest_cmd);
     $newspaper_load_result = drush_shell_exec_output();
 
